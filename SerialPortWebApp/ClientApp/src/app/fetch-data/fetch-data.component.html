@@ -1,0 +1,100 @@
+<br />
+<!-- Main Card start -->
+<div class="card">
+  <div class="card-header" style="background-color:#14b6ad">
+    <h1 class="card-title text-white"><b>Serial Port Tester</b></h1>
+    <h4 class="card-subtitle text-white mb-2">ASP.NET Core + Angular + Serialport</h4>
+  </div>
+  <div class="card-body">
+    <br />
+    <div class="alert alert-danger" role="alert" *ngIf="errorMsg">
+      {{errorMsg}}
+    </div>
+    <!-- Control Board start -->
+    <div class="col-md-12 col-lg-12">
+      <div class="card">
+        <div class="card-header" style="background-color:#ebfbfa">
+          <h4 class="my-0 text-primary">Control Board</h4>
+        </div>
+        <div class="card-body">
+          <div class="row justify-content-center">
+            <button (click)="scan()" [disabled]="port" class="btn btn-info btn-lg mx-1">
+              <b>SCAN</b>
+            </button>
+            <button (click)="openPort()" *ngIf="!port" [disabled]="!selectedPortId" class="btn btn-success btn-lg mx-1">
+              <b>OPEN</b>
+            </button>
+            <button (click)="closePort()" *ngIf="port" [disabled]="!port" class="btn btn-danger btn-lg mx-1">
+              <b>CLOSE</b>
+            </button>
+            <select [(ngModel)]="selectedBaud" *ngIf="!port">
+              <option *ngFor="let baud of bauds" [ngValue]="baud">{{baud}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Control Board end -->
+    <br />
+    <div class="col-md-12 col-lg-12" *ngIf="port">
+      <div class="card">
+        <div class="card-header" style="background-color:#ebfbfa">
+          <h4 class="my-0 text-primary">Rx & Tx Data (Selected Serial Port: {{port}})</h4>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Input sending data" aria-label="Recipient's username"
+                aria-describedby="basic-addon2" [(ngModel)]="txData" (keyup.enter)="sendData()">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" (click)="sendData()">Send Data</button>
+              </div>
+            </div>
+            <div class="rx-data-div" (click)="clearData()">
+              {{rxData}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <!-- Available Ports start -->
+    <div class="col-md-12 col-lg-12" *ngIf="!port">
+      <div class="card">
+        <div class="card-header" style="background-color:#ebfbfa">
+          <div *ngIf="!selectedPortId; else selected">
+            <h4 class="my-0 text-warning">Available Ports</h4>
+          </div>
+          <ng-template #selected>
+            <h4 class="my-0 text-success">Selected Port</h4>
+          </ng-template>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>{{ tableData.headerRow[0] }}</th>
+                  <!-- <th>{{ tableData.headerRow[1] }}</th>
+                  <th>{{ tableData.headerRow[2] }}</th>
+                  <th>{{ tableData.headerRow[3] }}</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let row of tableData.dataRows">
+                  <td><a href="javascript:void(0)" (click)="getPort($event)"><b>{{row.strComName}}</b></a></td>
+                  <!-- <td class="text-center">{{row.strComProdId}}</td>
+                  <td class="text-center">{{row.strComVendorId}}</td>
+                  <td class="text-center">{{row.strSummary}}</td> -->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Available Ports end -->
+  </div>
+</div>
+<!-- Main Card end -->

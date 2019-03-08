@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialPortWebApp", "SerialPortWebApp\SerialPortWebApp.csproj", "{7B825655-1276-4E2B-A38A-1D7452011093}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B825655-1276-4E2B-A38A-1D7452011093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B825655-1276-4E2B-A38A-1D7452011093}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B825655-1276-4E2B-A38A-1D7452011093}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B825655-1276-4E2B-A38A-1D7452011093}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F365B27-D36E-4E16-95D2-AAE9C1CF2159}
+	EndGlobalSection
+EndGlobal
